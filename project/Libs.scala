@@ -11,6 +11,7 @@ object Libs {
   val sttpVersion = "3.3.17"
   val catsEffectVersion = "3.3.0"
   val kindProjectorVersion = "0.13.2"
+  val cirisVersion = "2.3.1"
 
   object Akka {
     val ActorTyped = "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion
@@ -40,6 +41,12 @@ object Libs {
       "org.typelevel" % "kind-projector" % kindProjectorVersion cross CrossVersion.full
     )
   }
+
+  object Ciris {
+    val Core = "is.cir" %% "ciris" % cirisVersion
+    val Enum = "is.cir" %% "ciris-enumeratum" % cirisVersion
+  }
+
 
   val Logging = "com.typesafe.scala-logging" %% "scala-logging" % scalaLoggingVersion
   val Logback = "ch.qos.logback" % "logback-classic" % logbackVersion

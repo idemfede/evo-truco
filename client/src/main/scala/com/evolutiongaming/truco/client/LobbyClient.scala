@@ -7,13 +7,18 @@ import com.evolutiongaming.truco.protocol.LobbyProtocol.LobbyResponse
 import com.evolutiongaming.truco.protocol.LobbyProtocolFormat.lobbyResponseCodec
 import sttp.ws.WebSocket
 import cats.syntax.all._
+import com.evolutiongaming.truco.client.GameClient.useGameWebSocket
+import com.evolutiongaming.truco.client.config.Config
 
 object LobbyClient extends IOApp {
 
   override def run(args: List[String]): IO[ExitCode] = {
-    WebsocketResource[IO].makeLobbyResource(useLobbyWebSocket)
-      .useForever
-      .as(ExitCode.Success)
+    Config.load[IO].flatMap {
+      cfg =>
+        WebsocketResource[IO].makeLobbyResource(cfg, useLobbyWebSocket)
+          .useForever
+          .as(ExitCode.Success)
+    }
   }
 
   def useLobbyWebSocket(ws: WebSocket[IO]) = {

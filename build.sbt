@@ -84,6 +84,8 @@ lazy val client = (project in file("client"))
       CatsEffect,
       Logging,
       Logback % Runtime,
+      Ciris.Core,
+      Ciris.Enum
     ),
   )
 

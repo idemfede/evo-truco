@@ -7,17 +7,21 @@ import com.evolutiongaming.truco.protocol.GameProtocol.GameResponse
 import com.evolutiongaming.truco.protocol.GameProtocolFormat.gameResponseCodec
 import sttp.ws.WebSocket
 import cats.syntax.all._
+import com.evolutiongaming.truco.client.config.Config
 
 object GameClient extends IOApp {
 
   override def run(args: List[String]): IO[ExitCode] = {
-    args.headOption.fold(
-      IO.apply(ExitCode.Error)
-    )(
-      WebsocketResource[IO].makeGameResource(_, useGameWebSocket)
-        .useForever
-        .as(ExitCode.Success)
-    )
+    Config.load[IO].flatMap{
+      cfg =>
+        args.headOption.fold(
+          IO.apply(ExitCode.Error)
+        )(
+          WebsocketResource[IO].makeGameResource(_, cfg, useGameWebSocket)
+            .useForever
+            .as(ExitCode.Success)
+        )
+    }
   }
 
 
