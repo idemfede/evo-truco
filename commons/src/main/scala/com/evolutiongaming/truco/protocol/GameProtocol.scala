@@ -36,6 +36,10 @@ object GameProtocol {
 
     final case class GameFinished(game: Game) extends GameStatus
 
+    final case object WonGame extends GameStatus
+
+    final case object LostGame extends GameStatus
+
     final case object BadRequest extends GameResponse
 
   }

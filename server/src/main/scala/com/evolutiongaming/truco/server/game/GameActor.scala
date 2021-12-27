@@ -5,7 +5,7 @@ import akka.actor.typed.Behavior
 import akka.actor.typed.scaladsl.Behaviors
 import com.evolutiongaming.truco.model.PlayerId
 import com.evolutiongaming.truco.protocol.GameProtocol.GameRequest.{LeaveGame, PlayCard}
-import com.evolutiongaming.truco.protocol.GameProtocol.GameResponse.{FullGameStatus, GameFinished, GameStarted, OpponentLeft, WaitingForOpponent}
+import com.evolutiongaming.truco.protocol.GameProtocol.GameResponse.{FullGameStatus, GameFinished, GameStarted, LostGame, OpponentLeft, WaitingForOpponent, WonGame}
 import com.evolutiongaming.truco.server.game.GameInput.JoinGame
 import com.typesafe.scalalogging.LazyLogging
 
@@ -107,8 +107,20 @@ object GameActor extends BroadCasting with LazyLogging {
                 broadcast(FullGameStatus(state.game, state.players), state.clients)
                 Behaviors.same
               } {
-                //TODO constant
+                //TODO constant/env
                 case newState if newState.game.scores.values.exists(_ >= 1) =>
+                   val orderedScores = newState.game.scores.toSeq.sortBy(_._2)
+
+                  for {
+                    winner <- orderedScores.headOption
+                    client <- newState.clients.get(winner._1)
+                  } yield client ! WonGame
+
+                  for {
+                    loser <- orderedScores.lastOption
+                    client <- newState.clients.get(loser._1)
+                  } yield client ! LostGame
+
                   broadcast(GameFinished(newState.game), newState.clients)
                   gameFinished()
                 case newState =>
