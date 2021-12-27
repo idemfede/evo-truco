@@ -1,4 +1,4 @@
-# truco
+# Truco
 
 "Truco" card game
 
