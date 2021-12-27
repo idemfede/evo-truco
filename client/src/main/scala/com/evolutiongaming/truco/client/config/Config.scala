@@ -10,7 +10,7 @@ object Config {
                              port: Int)
 
   def load[F[_] : Async]: F[AppConfig] =
-    env("SC_APP_ENV")
+    env("APP_ENV")
       .as[AppEnvironment]
       .flatMap {
         case Local =>

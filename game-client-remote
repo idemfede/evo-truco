@@ -1,1 +1,2 @@
-./$cwd/client/target/universal/stage/bin/game-client -DSC_APP_ENV=remote $1
+export APP_ENV=remote
+./$cwd/client/target/universal/stage/bin/game-client $1

@@ -1,1 +1,2 @@
-./$cwd/client/target/universal/stage/bin/game-client -DSC_APP_ENV=local $1
+export APP_ENV=local
+./$cwd/client/target/universal/stage/bin/game-client $1

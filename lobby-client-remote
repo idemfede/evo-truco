@@ -1,1 +1,2 @@
-./$cwd/client/target/universal/stage/bin/lobby-client -DSC_APP_ENV=remote
+export APP_ENV=remote
+./$cwd/client/target/universal/stage/bin/lobby-client
