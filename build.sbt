@@ -87,7 +87,7 @@ lazy val client = (project in file("client"))
     ),
   )
 
-Compile / herokuAppName := "truco-app-evo"
+Compile / herokuAppName := "evo-truco"
 
 
 
