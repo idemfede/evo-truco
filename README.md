@@ -1,2 +1,6 @@
-# truco-pof
-Proof of concept for a multiplayer "Truco" game
+# truco
+
+"Truco" card game
+
+
+My submission for Evolution Scala Bootcamp 2021
