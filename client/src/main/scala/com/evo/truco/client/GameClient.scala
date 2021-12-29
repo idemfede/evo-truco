@@ -1,13 +1,13 @@
 package com.evo.truco.client
 
 import cats.effect.{ExitCode, IO, IOApp}
-import com.evo.truco.client.clientGame.GameService
+import com.evo.truco.client.game.GameService
 import com.evo.truco.client.effects.ConsoleOutput
 import com.evo.truco.protocol.GameProtocol.GameResponse
 import com.evo.truco.protocol.GameProtocolFormat.gameResponseCodec
 import sttp.ws.WebSocket
 import cats.syntax.all._
-import com.evo.truco.client.clientGame.{GameRouter, GameService}
+import com.evo.truco.client.game.{GameRouter, GameService}
 import com.evo.truco.client.config.Config
 import com.evo.truco.client.effects.{ConsoleInput, ConsoleOutput, WebsocketResource}
 

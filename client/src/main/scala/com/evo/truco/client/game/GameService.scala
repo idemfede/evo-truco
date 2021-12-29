@@ -1,4 +1,4 @@
-package com.evo.truco.client.clientGame
+package com.evo.truco.client.game
 
 import cats.effect.kernel.Sync
 import com.evo.truco.model.Card

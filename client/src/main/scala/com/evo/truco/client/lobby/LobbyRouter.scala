@@ -1,4 +1,4 @@
-package com.evo.truco.client.clientLobby
+package com.evo.truco.client.lobby
 
 import cats.Monad
 import cats.data.{Kleisli, OptionT}

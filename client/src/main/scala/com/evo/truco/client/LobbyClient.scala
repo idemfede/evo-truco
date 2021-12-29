@@ -1,7 +1,7 @@
 package com.evo.truco.client
 
 import cats.effect.{ExitCode, IO, IOApp}
-import com.evo.truco.client.clientLobby.LobbyRouter
+import com.evo.truco.client.lobby.LobbyRouter
 import com.evo.truco.client.effects.ConsoleOutput
 import com.evo.truco.protocol.LobbyProtocol.LobbyResponse
 import com.evo.truco.protocol.LobbyProtocolFormat.lobbyResponseCodec
@@ -9,7 +9,7 @@ import sttp.ws.WebSocket
 import cats.syntax.all._
 import com.evo.truco.client.config.Config
 import GameClient.useGameWebSocket
-import com.evo.truco.client.clientLobby.{LobbyRouter, LobbyService}
+import com.evo.truco.client.lobby.{LobbyRouter, LobbyService}
 import com.evo.truco.client.effects.{ConsoleInput, ConsoleOutput, WebsocketResource}
 
 object LobbyClient extends IOApp {

@@ -1,4 +1,4 @@
-package com.evo.truco.client.clientLobby
+package com.evo.truco.client.lobby
 
 import com.evo.truco.protocol.LobbyProtocol.LobbyRequest
 import com.evo.truco.protocol.LobbyProtocol.LobbyRequest.{JoinQueue, LeaveQueue}
