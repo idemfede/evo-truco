@@ -1,5 +1,5 @@
-import com.evolutiongaming.truco.protocol.LobbyProtocol.{LobbyRequest, LobbyResponse}
-import com.evolutiongaming.truco.protocol.LobbyProtocolFormat._
+import com.evo.truco.protocol.LobbyProtocol.{LobbyRequest, LobbyResponse}
+import com.evo.truco.protocol.LobbyProtocolFormat._
 import io.circe.parser._
 import io.circe.syntax._
 import org.scalatest.OptionValues

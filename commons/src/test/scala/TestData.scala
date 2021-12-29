@@ -1,7 +1,8 @@
-import com.evolutiongaming.truco.model._
-import com.evolutiongaming.truco.protocol.GameProtocol.GameRequest.PlayCard
-import com.evolutiongaming.truco.protocol.GameProtocol.{GameRequest, GameResponse}
-import com.evolutiongaming.truco.protocol.LobbyProtocol.{LobbyRequest, LobbyResponse}
+import com.evo.truco.model.{Card, Game, GameId, Player, PlayerId, Rank, Suit}
+import com.evo.truco.model._
+import com.evo.truco.protocol.GameProtocol.GameRequest.PlayCard
+import com.evo.truco.protocol.GameProtocol.{GameRequest, GameResponse}
+import com.evo.truco.protocol.LobbyProtocol.{LobbyRequest, LobbyResponse}
 
 trait TestData {
 
