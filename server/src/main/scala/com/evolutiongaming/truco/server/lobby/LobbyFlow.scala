@@ -27,8 +27,7 @@ object LobbyFlow extends LazyLogging {
       bufferSize = 100,
       overflowStrategy = OverflowStrategy.fail)
 
-    //TODO extract reusable shape
-    Flow.fromGraph(GraphDSL.createGraph(sourceActor) { implicit builder =>
+     Flow.fromGraph(GraphDSL.createGraph(sourceActor) { implicit builder =>
       sourceShape =>
 
 
@@ -39,7 +38,7 @@ object LobbyFlow extends LazyLogging {
 
         val fromWebsocket = builder.add(Flow[Message].filter {
           case _: TextMessage => true
-          case _: BinaryMessage => false //TODO consume binary messages to avoid backpressure
+          case _: BinaryMessage => false
         })
 
         val parseMessages = builder.add(

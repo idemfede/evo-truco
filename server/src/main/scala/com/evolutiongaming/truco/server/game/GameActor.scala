@@ -18,8 +18,7 @@ object GameActor extends BroadCasting with LazyLogging {
     )
   }
 
-  //TODO how to close connection and stop actor?
-  def gameFinished(): Behavior[GameCommand] = {
+   def gameFinished(): Behavior[GameCommand] = {
     Behaviors.ignore
   }
 
@@ -82,8 +81,7 @@ object GameActor extends BroadCasting with LazyLogging {
   }
 
   private def playingGame(state: GameState): Behavior[GameCommand] = {
-    //TODO add some consistence/validation  (option and card played)
-    Behaviors.receive { (_, msg) =>
+     Behaviors.receive { (_, msg) =>
       msg match {
         case GameCommand(playerId, action) =>
           action match {
@@ -107,8 +105,7 @@ object GameActor extends BroadCasting with LazyLogging {
                 broadcast(FullGameStatus(state.game, state.players), state.clients)
                 Behaviors.same
               } {
-                //TODO constant/env
-                case newState if newState.game.scores.values.exists(_ >= 1) =>
+                 case newState if newState.game.scores.values.exists(_ >= 1) =>
                    val orderedScores = newState.game.scores.toSeq.sortBy(_._2)
 
                   for {

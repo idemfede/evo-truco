@@ -27,12 +27,12 @@ object ConsoleTranslator {
   implicit def veryUglyGameTranslator[T] = new ConsoleTranslator[GameResponse] {
 
     def toReadable(game: Game): String = {
-      val board = game.board.map(_._2.map(card => card.rank.value + card.suit.shortName).mkString("[", " ", "]")).mkString("[", ", ", "]")
+      val board = game.board.map(_._2.map(card => s"${card.rank.value}${card.suit.shortName}").mkString("[", " ", "]")).mkString("[", ", ", "]")
       s"Cards on board are $board"
     }
 
     def toReadable(player: Player) = {
-      val cards = player.cards.map(card => card.rank.value + card.suit.shortName).mkString("[", ", ", "]")
+      val cards = player.cards.map(card => s"${card.rank.value}${card.suit.shortName}").mkString("[", ", ", "]")
       val options = player.options.map(readableOption).mkString("[", ", ", "]")
       s"Your cards are $cards and your options are $options"
     }

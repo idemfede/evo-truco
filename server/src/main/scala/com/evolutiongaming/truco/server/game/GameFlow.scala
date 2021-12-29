@@ -22,13 +22,13 @@ object GameFlow extends LazyLogging  {
 
   def apply(sinkActor: ActorRef[GameCommand], connectionId: String) = {
 
-    val sourceActor = ActorSource.actorRef[GameResponse](
+    val responsesSource = ActorSource.actorRef[GameResponse](
       completionMatcher = Map.empty,
       failureMatcher = Map.empty,
       bufferSize = 100,
       overflowStrategy = OverflowStrategy.fail)
 
-    Flow.fromGraph(GraphDSL.createGraph(sourceActor) { implicit builder =>
+    Flow.fromGraph(GraphDSL.createGraph(responsesSource) { implicit builder =>
       sourceShape =>
         import GraphDSL.Implicits._
 
