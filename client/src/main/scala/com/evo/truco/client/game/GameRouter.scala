@@ -10,15 +10,10 @@ object GameRouter {
   def apply[F[_] : Monad : Async](s: GameService[F]): Kleisli[OptionT[F, *], List[String], Unit] =
     Kleisli[OptionT[F, *], List[String], Unit] {
       case "card" :: card :: Nil => OptionT.liftF(
-        for {
-          _ <- Sync[F].delay(println(card))
-          _ <- s.playCard(card)
-        } yield ()
+        s.playCard(card).void
       )
-      case "leaveGame" :: Nil => OptionT.liftF(
-        for {
-          _ <- s.leaveGame
-        } yield ()
+      case "leave" :: Nil => OptionT.liftF(
+        s.leaveGame.void
       )
       case _ => OptionT.none
     }

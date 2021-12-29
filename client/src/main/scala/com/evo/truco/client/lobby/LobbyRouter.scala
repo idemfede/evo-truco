@@ -9,14 +9,10 @@ object LobbyRouter {
   def apply[F[_] : Monad : Async](s: LobbyService[F]): Kleisli[OptionT[F, *], List[String], Unit] =
     Kleisli[OptionT[F, *], List[String], Unit] {
       case "leave" :: Nil => OptionT.liftF(
-        for {
-          _ <- s.leaveQueue
-        } yield ()
+        s.leaveQueue.void
       )
       case "join" :: Nil => OptionT.liftF(
-        for {
-          _ <- s.joinQueue
-        } yield ()
+        s.joinQueue.void
       )
       case _ => OptionT.none
     }
