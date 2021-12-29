@@ -47,7 +47,7 @@ lazy val server = (project in file("server"))
   .enablePlugins(AshScriptPlugin)
   .enablePlugins(JavaAppPackaging)
   .settings(
-    Compile / mainClass := Some("com.evolutiongaming.truco.server.Main"),
+    Compile / mainClass := Some("com.evo.truco.server.Main"),
     Docker / packageName := "truco",
     dockerBaseImage := "openjdk:11-jre-slim-buster",
     dockerExposedPorts ++= Seq(8080),
